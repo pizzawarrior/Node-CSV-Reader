@@ -1,7 +1,7 @@
 import { STRING } from "sequelize";
 import { sequelize } from "../database/index.js";
 
-const Record = sequelize.define("employee", {
+const Record = sequelize.define("record", {
   customer_id: {
     type: STRING,
     primaryKey: true,

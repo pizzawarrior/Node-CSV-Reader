@@ -1,6 +1,6 @@
 import { Router } from "express";
 import csvController from "../controllers/csvController.js";
-import getRecords from "../controllers/employeeController.js";
+import getRecords from "../controllers/recordController.js";
 import uploadFile from "../middleware/upload.js";
 
 const router = Router();
