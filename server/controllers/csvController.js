@@ -1,4 +1,4 @@
-import Employee from "../models/employeeModel.js";
+import Record from "../models/recordModel.js";
 import { createReadStream } from "fs";
 import { parse } from "fast-csv";
 import { Parser as CsvParser } from "json2csv";
@@ -13,7 +13,7 @@ const upload = async (req, res) => {
       return res.status(400).send("Please upload a csv file");
     }
 
-    let employees = [];
+    let records = [];
     let path = "./resources/static/assets/uploads/" + req.file.filename;
 
     createReadStream(path)
@@ -22,10 +22,10 @@ const upload = async (req, res) => {
         throw error.message;
       })
       .on("data", (row) => {
-        employees.push(row);
+        records.push(row);
       })
       .on("end", () => {
-        Employee.bulkCreate(employees)
+        Record.bulkCreate(records)
           .then(() => {
             res.status(200).send({
               message:
@@ -50,55 +50,25 @@ const upload = async (req, res) => {
 };
 
 const download = (_req, res) => {
-  Employee.findAll().then((objs) => {
-    let employees = [];
+  Record.findAll().then((objs) => {
+    let records = [];
 
     objs.forEach((obj) => {
-      const {
-        id,
-        name,
-        email,
-        username,
-        dob,
-        company,
-        address,
-        location,
-        salary,
-        about,
-        role,
-      } = obj;
-      employees.push({
-        id,
-        name,
-        email,
-        username,
-        dob,
-        company,
-        address,
-        location,
-        salary,
-        about,
-        role,
+      const { customer_id, event_type, event_id, event_date } = obj;
+      records.push({
+        customer_id,
+        event_type,
+        event_id,
+        event_date,
       });
     });
 
-    const csvFields = [
-      "id",
-      "name",
-      "email",
-      "dob",
-      "company",
-      "address",
-      "location",
-      "salary",
-      "about",
-      "role",
-    ];
+    const csvFields = ["customer_id", "event_type", "event_id", "event_date"];
     const csvParser = new CsvParser({ csvFields });
-    const csvData = csvParser.parse(employees);
+    const csvData = csvParser.parse(records);
 
     res.setHeader("Content-Type", "text/csv");
-    res.setHeader("Content-Disposition", "attachment; filename=employees.csv");
+    res.setHeader("Content-Disposition", "attachment; filename=records.csv");
 
     res.status(200).end(csvData);
   });
