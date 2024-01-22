@@ -1,35 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useMemo, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
+
+const uploadToServer = (file, onUploadProgress) => {
+  let formData = new FormData();
+  formData.append("file", file);
+
+  return axios.post("http://localhost:8080/api/csv/upload/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    onUploadProgress,
+  });
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState([]);
+  const [selectedFiles, setSelectedFiles] = useState(undefined);
+  const [currentFile, setCurrentFile] = useState(undefined);
+  const [progress, setProgress] = useState(0);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const result = await axios("http://localhost:8080/api/records/");
+      setData(result.data);
+    })();
+  }, []);
+
+  const selectFile = (event) => {
+    setSelectedFiles(event.target.files);
+  };
+
+  const upload = () => {
+    let currentFile = selectedFiles[0];
+
+    setProgress(0);
+    setCurrentFile(currentFile);
+
+    uploadToServer(currentFile, (event) => {
+      setProgress(Math.round((100 * event.loaded) / event.total));
+    })
+      .then(async (response) => {
+        setMessage(response.data.message);
+
+        const result = await axios("http://localhost:8080/api/records/");
+        setData(result.data);
+      })
+      .catch(() => {
+        setProgress(0);
+        setMessage("Could not upload the selected file");
+        setCurrentFile(undefined);
+      });
+
+    setSelectedFiles(undefined);
+  };
 
   return (
-    <>
+    <div className="App">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        {currentFile && (
+          <div className="progress">
+            <div
+              className="progress-bar progress-bar-info progress-bar-striped"
+              role="progressbar"
+              aria-valuenow={progress}
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{ width: progress + "%" }}
+            >
+              {progress}%
+            </div>
+          </div>
+        )}
+
+        <label className="btn btn-default">
+          <input type="file" onChange={selectFile} />
+        </label>
+
+        <button
+          className="btn btn-success"
+          disabled={!selectedFiles}
+          onClick={upload}
+        >
+          Upload
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+        <div className="alert alert-light" role="alert">
+          {message}
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
