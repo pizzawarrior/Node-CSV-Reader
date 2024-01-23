@@ -1,7 +1,7 @@
 import Record from "../models/recordModel.js";
 
 const getRecord = (_req, res) => {
-  Record.findOne(_req.params.Record_id)
+  Record.findOne(_req.params.event_id)
     .then((data) => {
       res.send(data);
     })
