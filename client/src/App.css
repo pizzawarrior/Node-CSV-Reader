@@ -1,6 +1,8 @@
 table {
   border-spacing: 0;
-  border: 1px solid #ededed;
+  border: 2px solid #2f9f2f;
+  border-radius: 7px;
+  color: white;
 }
 table tr:last-child td {
   border-bottom: 0;
@@ -9,8 +11,8 @@ table th,
 table td {
   margin: 0;
   padding: 0.5rem;
-  border-bottom: 1px solid #ededed;
-  border-right: 1px solid #ededed;
+  border-bottom: 2px solid #2e852e;
+  border-right: 1px solid #2e852e;
   position: relative;
 }
 table th:last-child,
@@ -18,7 +20,8 @@ table td:last-child {
   border-right: 0;
 }
 table tr:nth-child(even) {
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
+  background-color: #01310b;
 }
 
 table th::before {
@@ -32,32 +35,35 @@ table th::before {
   border-right: 5px solid transparent;
 }
 table th.sort-asc::before {
-  border-bottom: 5px solid #22543d;
+  border-bottom: 8px solid white;
+
 }
 table th.sort-desc::before {
-  border-top: 5px solid #22543d;
+  border-top: 8px solid white;
 }
 
 .App {
   display: flex;
   flex-direction: column;
   padding: 20px;
-}
-.badge {
-  background-color: #9ae6b4;
-  color: #22543d;
-  margin-right: 4px;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
+  background-color: #094615;
+
 }
 input {
   padding: 10px;
   margin-bottom: 20px;
   font-size: 18px;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 2px solid #c2aeae;
   box-shadow: none;
+  color: rgb(74, 71, 71);
+  background-color: rgb(147, 191, 152);
+}
+
+.btn.btn-success {
+  margin-left: 40px;
+  background-color: #01310b ;
+  color: white;
+  border-color: #2f9f2f;
+  border-width: 1px;
 }

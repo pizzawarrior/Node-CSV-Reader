@@ -22,13 +22,6 @@
 - run the Express server: `npm start`
 - run the frontend: cd client, then run: `npm run dev`
 
-<!-- * To run the frontend: `npm run dev` -->
-
-### Current status:
-* Postgres db is functional inside Docker, and the API can connect to it from the outside
-* We can successfully upload and parse csv files to disk
-* The data does not appear to be adding to the database
-
 ### Troubleshooting:
 * Is there data in the database?
 - With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records;"`
@@ -49,3 +42,4 @@
 * Add an integration test (either with Mocha/ Chai or Jest)
 * CI/CD it
 * Add more features.. to be determined...
+* Wouldn't it be nice to have a page that displays time buckets of aggregate hourly counts from specific customer_id's?
