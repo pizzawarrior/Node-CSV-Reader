@@ -1,6 +1,9 @@
+//Break this into a pages page and use react router to simplify (refer to mod 3 project gamma file structure)
+
 import { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import Table from "../components/table";
 
 const uploadToServer = (file, onUploadProgress) => {
   let formData = new FormData();
@@ -21,6 +24,28 @@ function App() {
   const [progress, setProgress] = useState(0);
   const [message, setMessage] = useState("");
 
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Customer ID",
+        accessor: "customer_id",
+      },
+      {
+        Header: "Event Type",
+        accessor: "event_type",
+      },
+      {
+        Header: "Event ID",
+        accessor: "event_id",
+      },
+      {
+        Header: "Event Date",
+        accessor: "event_date",
+      },
+    ],
+    []
+  );
+
   useEffect(() => {
     (async () => {
       const result = await axios("http://localhost:8080/api/records/");
@@ -34,6 +59,7 @@ function App() {
 
   const upload = () => {
     let currentFile = selectedFiles[0];
+    console.log(currentFile);
 
     setProgress(0);
     setCurrentFile(currentFile);
@@ -90,6 +116,7 @@ function App() {
           {message}
         </div>
       </div>
+      <Table columns={columns} data={data} />
     </div>
   );
 }

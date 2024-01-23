@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 });
 
 const csvFilter = (_req, file, cb) => {
-  console.log("Reading file in middleware", file.originalname);
+  console.log("Reading file in middleware:", file.originalname);
   if (file == undefined) {
     cb("Please upload a file to proceed", false);
   } else if (file.mimetype.includes("csv")) {

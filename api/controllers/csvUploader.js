@@ -15,13 +15,21 @@ const csvUploader = async (req, res) => {
     let records = [];
     let path = "./resources/static/assets/uploads/" + req.file.filename;
 
+    const headers = ["customer_id", "event_type", "event_id", "event_date"];
+
     createReadStream(path)
-      .pipe(parse({ headers: true }))
+      .pipe(parse({ headers: headers }))
       .on("error", (error) => {
         throw error.message;
       })
       .on("data", (row) => {
-        records.push(row);
+        records.push({
+          customer_id: row.customer_id,
+          event_type: row.event_type,
+          event_id: row.event_id,
+          event_date: row.event_date,
+        });
+        console.log(row); // DELETE MEEEEEEEEEEEEEEEEEEEEEEEEEE
       })
       .on("end", () => {
         Record.bulkCreate(records)

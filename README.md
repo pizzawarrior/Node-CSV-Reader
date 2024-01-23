@@ -17,12 +17,21 @@
 - `docker compose up`
 - cd to api, then: `npm test`
 -> 3 tests should pass, confirming proper database configuration
+* To run this project in the browser:
+- run the database: Make sure Docker desktop is open: `docker compose up`
+- run the Express server: `npm start`
+- run the frontend: cd client, then run: `npm run dev`
+
 <!-- * To run the frontend: `npm run dev` -->
 
 ### Current status:
-* The backend is built with a generic 'Employee' schema
 * Postgres db is functional inside Docker, and the API can connect to it from the outside
-* React is installed in the frontend and is waiting to be built out
+* We can successfully upload and parse csv files to disk
+* The data does not appear to be adding to the database
+
+### Troubleshooting:
+* Is there data in the database?
+- With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records;"`
 
 ### MVP:
 1. Rebuild schema to include our 'Customer' info found in the 'events.csv' file
