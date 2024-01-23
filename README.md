@@ -17,6 +17,10 @@
 - `docker compose up`
 - cd to api, then: `npm test`
 -> 3 tests should pass, confirming proper database configuration
+* To run this project in the browser:
+- Make sure Docker desktop is open: `docker compose up`
+- cd client, then run: `npm run dev`
+
 <!-- * To run the frontend: `npm run dev` -->
 
 ### Current status:

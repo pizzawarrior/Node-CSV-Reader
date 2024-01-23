@@ -31,7 +31,7 @@ export default function Table({ columns, data }) {
       <input
         value={filterInput}
         onChange={handleFilterChange}
-        placeholder="Search name"
+        placeholder="Search Customer ID"
       />
       <table {...getTableProps()}>
         <thead>
@@ -39,7 +39,7 @@ export default function Table({ columns, data }) {
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th
-                  {...column.getHeaderGroupProps(column.getSortByToggleProps())}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
                   className={
                     column.isSorted
                       ? column.isSortedDesc
