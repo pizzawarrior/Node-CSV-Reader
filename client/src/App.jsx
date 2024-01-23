@@ -59,6 +59,7 @@ function App() {
 
   const upload = () => {
     let currentFile = selectedFiles[0];
+    console.log(currentFile);
 
     setProgress(0);
     setCurrentFile(currentFile);
