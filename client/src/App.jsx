@@ -27,20 +27,25 @@ function App() {
   const columns = useMemo(
     () => [
       {
-        Header: "Customer ID",
-        accessor: "customer_id",
-      },
-      {
-        Header: "Event Type",
-        accessor: "event_type",
-      },
-      {
-        Header: "Event ID",
-        accessor: "event_id",
-      },
-      {
-        Header: "Event Date",
-        accessor: "event_date",
+        Header: "Usage Event Records",
+        columns: [
+          {
+            Header: "Customer ID",
+            accessor: "customer_id",
+          },
+          {
+            Header: "Event Type",
+            accessor: "event_type",
+          },
+          {
+            Header: "Event ID",
+            accessor: "event_id",
+          },
+          {
+            Header: "Timestamp",
+            accessor: "event_date",
+          },
+        ],
       },
     ],
     []
