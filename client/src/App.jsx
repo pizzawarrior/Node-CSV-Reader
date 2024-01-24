@@ -53,7 +53,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const result = await axios("http://localhost:8080/api/records/");
+      const result = await axios("http://localhost:8080/api/usage/");
       setData(result.data);
     })();
   }, []);
@@ -75,7 +75,7 @@ function App() {
       .then(async (response) => {
         setMessage(response.data.message);
 
-        const result = await axios("http://localhost:8080/api/records/");
+        const result = await axios("http://localhost:8080/api/usage/");
         setData(result.data);
       })
       .catch(() => {

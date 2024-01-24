@@ -47,7 +47,7 @@
 * To run the Express server: `npm run start`
 * To run the integration test:
 - `docker compose up`
-- cd to api, then: `npm test`
+- `npm test`
 -> 3 tests should pass, confirming proper database configuration
 * To run this project in the browser:
 - run the database: Make sure Docker desktop is open: `docker compose up`
