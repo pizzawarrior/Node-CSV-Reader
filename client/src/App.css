@@ -67,3 +67,11 @@ input {
   border-color: #2f9f2f;
   border-width: 1px;
 }
+
+.progress-bar {
+  color: rgb(204, 198, 198);
+}
+
+.alert.alert-light {
+  color: rgb(204, 198, 198);
+}

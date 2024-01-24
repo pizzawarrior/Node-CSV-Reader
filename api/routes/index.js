@@ -17,10 +17,10 @@ let routes = (app) => {
   router.get("/csv/download/", csvDownloader);
 
   // get all records
-  router.get("/records/", getRecords);
+  router.get("/usage/", getRecords);
 
   // get single record by event_id
-  router.get("/record/:event_id", getRecord);
+  router.get("/usage/:event_id", getRecord);
 
   // create a new record
   router.put("/", createRecord);
