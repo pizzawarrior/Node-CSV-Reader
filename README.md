@@ -22,7 +22,7 @@
 * Jest: Integration testing
 
 ## Project Architecture
-
+![Appliction Architecture](https://github.com/pizzawarrior/node-docker-csv-importer/assets/94874182/53b83f2a-6f84-4b1c-a640-99cc1e438566)
 
 ### Running This Project Locally
 * Make sure Docker desktop is open: `docker compose up`
