@@ -6,7 +6,22 @@
 - Ability to view the data in a clean UI
 - Once parsed and stored, the data could then be aggregated by a specified metric (eg. hourly buckets) allowing for the generation of invoices based on customer usage.
 
-### MVP
+## User Stories:
+### Customer: Outrider.ai - Autonomous yard truck company deployed to thousands of sites globally
+- As a customer I want the ability to create an account, login, and signout
+- I want to be able to view all of my customers' usage data
+- I want to be able to view all of my customers' current invoices
+- I want to be able to view all of my customers' past invoices
+- I want to be able to ask questions about/ resolve any issues my customers have with invoicing
+
+### Usage Based Billing Company:
+- As a company, we want to be able to have admin accounts that can view all usage data by all customers
+- We want to be able to view all invoices, current or past
+- We want to be able to query the data based on specified inputs: <br>
+&nbsp;&nbsp;&nbsp;&nbsp; * aggregate by customer_id <br>
+&nbsp;&nbsp;&nbsp;&nbsp; * ability to add a start_date and end_date to aggregate data into hourly buckets
+
+### Minimum Viable Product:
 1. A Node project that uses Docker to persist a relational database
 2. Ability to upload .csv files, parse them, and add them to the db
 3. A UI that will call the db and display the data
