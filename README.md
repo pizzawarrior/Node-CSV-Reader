@@ -39,6 +39,9 @@
 ## Project Architecture
 ![Appliction Architecture](https://github.com/pizzawarrior/node-docker-csv-importer/assets/94874182/53b83f2a-6f84-4b1c-a640-99cc1e438566)
 
+## Endpoints
+<img src="https://github.com/pizzawarrior/CSV-Reader/assets/94874182/5fd008c7-3c10-453e-9a10-ea247d1a4fe6" width="850">
+
 ### Running This Project Locally
 * Make sure Docker desktop is open: `docker compose up`
 * To run the Express server: `npm run start`
