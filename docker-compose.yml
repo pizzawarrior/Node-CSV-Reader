@@ -35,7 +35,7 @@ services:
     image: node:latest
     build: ./client
     working_dir: /app # for entering the specific project folder inside container
-    command: "npm run dev" # to start the vite service
+    # command: "npm install && npm run dev" # to start the vite service
     volumes:
       - ./client:/app
       - /app/node_modules
@@ -47,5 +47,3 @@ services:
       - "3000:3000"
     stdin_open: true
     tty: true
-    environment:
-      REACT_APP_API_HOST: ${REACT_APP_API_HOST}
