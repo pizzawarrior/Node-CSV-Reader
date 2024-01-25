@@ -41,7 +41,7 @@
 * react-table: for quickly building a table, allowing for sorting, and easily managing the rendering of data
 
 ## Project Architecture
-![Appliction Architecture](https://github.com/pizzawarrior/node-docker-csv-importer/assets/94874182/53b83f2a-6f84-4b1c-a640-99cc1e438566)
+![Appliction Architecture](https://github.com/pizzawarrior/CSV-Reader/assets/94874182/9f17f21e-0f8b-41d5-bc0a-1baa98589e85)
 
 ## Models
 ### Records Model
