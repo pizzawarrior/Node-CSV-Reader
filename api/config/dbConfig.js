@@ -1,4 +1,4 @@
-const HOST = "postgres"; //ConnectionRefusedError [SequelizeConnectionRefusedError]
+const HOST = "postgres";
 const USER = "postgres";
 const PASSWORD = "LetsG000000";
 const DB = "csvdb";
