@@ -35,7 +35,7 @@ services:
     image: node:latest
     build: ./client
     working_dir: /app # for entering the specific project folder inside container
-    # command: "npm install && npm run dev" # to start the vite service
+    command: "npm run dev" # to start the vite service
     volumes:
       - ./client:/app
       - /app/node_modules
