@@ -1,11 +1,51 @@
 version: '3.1'
 
+volumes:
+  records-db:
+    external: true
+
 services:
-  db:
+  api:
+    build: ./api
+    depends_on:
+      - postgres
+    ports:
+      - 8080:8080
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: LetsG000000
+      DB_HOST: postgres
+
+  postgres:
     image: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: LetsG000000
       POSTGRES_DB: csvdb
+    volumes:
+      - records-db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  client:
+    image: node:latest
+    build: ./client
+    working_dir: /app # for entering the specific project folder inside container
+    command: "npm run dev" # to start the vite service
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    # volumes: # This keeps app folder empty, but creates new client folder then adds app file but does not install deps
+    #  - type: bind
+    #    source: ./
+    #    target: /client/app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    environment:
+      REACT_APP_API_HOST: ${REACT_APP_API_HOST}
