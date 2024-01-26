@@ -2,53 +2,59 @@
 
 ## Problem Statement
 - As a startup we recieve a high volume of customer usage data sent to us as .csv files
-- We need to be able to take .csv files, parse them, upload them to a database, and query the data
-- Ability to view the data in a clean UI
-- Once parsed and stored, the data could then be aggregated by a specified metric (eg. hourly buckets) allowing for the generation of invoices based on customer usage.
+- We need to be able to: <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - take .csv files, parse them, upload them to a database, and query the data <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - view the data in a clean UI <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - aggregate the data by key metrics (eg. into hourly buckets for individual customers) <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - generate invoices based on customer usage
 
 ## User Stories:
 ### Customer: Outrider.ai - Autonomous yard truck company deployed to thousands of sites globally
-- As a customer I want the ability to create an account, login, and signout
-- I want to be able to view all of my customers' usage data
-- I want to be able to view all of my customers' current invoices
-- I want to be able to view all of my customers' past invoices
-- I want to be able to ask questions about/ resolve any issues my customers have with invoicing
+- As a customer I want the ability to: <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - create an account, login, and signout <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - view all of my customers' usage data <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - view all of my customers' current invoices <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - view all of my customers' past invoices <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - ask questions about/ resolve any issues my customers have with invoicing
 
 ### Usage Based Billing Company:
-- As a company, we want to be able to have admin accounts that can view all usage data by all customers
-- We want to be able to view all invoices, current or past
-- We want to be able to query the data based on specified inputs: <br>
-&nbsp;&nbsp;&nbsp;&nbsp; * aggregate by customer_id <br>
-&nbsp;&nbsp;&nbsp;&nbsp; * ability to add a start_date and end_date to aggregate data into hourly buckets
+- As a company, we want to be able to: <br>
+&nbsp;&nbsp;&nbsp;&nbsp; -  have admin accounts that can view all usage data by all customers <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - view all invoices, current or past <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - query the data based on specified inputs, such as: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * aggregate by customer_id <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * ability to add a start_date and end_date to aggregate data into hourly buckets
 
 ## Minimum Viable Product:
-1. A Node project that uses Docker to persist a relational database, and containerize all services independently
+1. A Node project that uses Docker to persist a relational database, and containerize all services independently into microservices
 2. Ability to upload .csv files, parse them, and add them to the db
 3. A UI that will call the db and display the data
 
 ## This project is made with:
 ### Backend:
+* Node.js: for the ability to build a server side app using Javascript
 * Express: for providing a REST API
 * Cors: for providing secure data transfers between the browser and server
 * Multer: the middleware of choice for handling mulitpart/ form-data when uploading files
 * Pg: as a non-blocking PostgreSQL client for Node
-* Sequelize: ORM things and database interactions
+* Sequelize: all things ORM; handling database interactions
 * Fast-csv: library for parsing and formatting CSV files
 * Json2csv: library for converting JSON into CSV with headers and proper line endings
 * Jest: Integration testing
+
 ### Frontend:
 * React: for dynamically handling the UI, and providing a great foundation to scale from
-* react-table: for quickly building a table, allowing for sorting, and easily managing the rendering of data
+* react-table: for facilitting the quick build of a table that cleanly integrates sorting
 
 ## Project Architecture
 ![Appliction Architecture](https://github.com/pizzawarrior/CSV-Reader/assets/94874182/9f17f21e-0f8b-41d5-bc0a-1baa98589e85)
 
 ## Models
 ### Records Model
-- customer_id: used to track a customer's usage
-- event_type: describes what kind of usage event was recorded
-- event_id: this is a unique id given to each individual recorded event, and is used as the Primary Key in the database
-- event_date: this is a timestamp of when the usage event occurred, which can be used for metering usage and generating invoices
+- customer_id: string; used to track a customer's usage
+- event_type: string; describes what kind of usage event was recorded
+- event_id: string; this is a unique id given to each individual recorded event, and is used as the Primary Key in the database
+- event_date: string; this is a timestamp of when the usage event occurred, which can be used for metering usage and generating invoices
 
 ## Endpoints
 <img src="https://github.com/pizzawarrior/CSV-Reader/assets/94874182/5fd008c7-3c10-453e-9a10-ea247d1a4fe6" width="850">
@@ -68,5 +74,5 @@
 6. CI/CD
 
 ### Troubleshooting:
-* Is there data in the database?
-- With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records;"`
+* Is there data in the database? <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records;"`
