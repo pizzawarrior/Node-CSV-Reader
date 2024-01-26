@@ -21,7 +21,7 @@ export default function Table({ columns, data }) {
   );
 
   const handleFilterChange = (e) => {
-    const value = e.target.value || undefined;
+    const value = e.target.value || "";
     setFilter("customer_id", value);
     setFilterInput(value);
   };
