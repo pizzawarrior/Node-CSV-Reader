@@ -44,6 +44,7 @@
 
 ### Frontend:
 * React: for dynamically handling the UI, and providing a great foundation to scale from
+* Axios: for sending async HTTP requests to the REST API endpoints
 * react-table: for facilitting the quick build of a table that cleanly integrates sorting
 
 ## Project Architecture
