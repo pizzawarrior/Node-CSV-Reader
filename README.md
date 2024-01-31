@@ -63,7 +63,7 @@
 ## Running This Project Locally
 * Make sure Docker desktop is open: `docker compose up`
 * To run the integration test: <br>
-&nbsp;&nbsp;&nbsp;&nbsp; --> cd to api, make sure Docker Desktop is open, and run: `docker compose run api npm test` <br>
+&nbsp;&nbsp;&nbsp;&nbsp; --> cd to api, make sure Docker Desktop is open, and run: `docker compose run --rm api npm test` <br>
 &nbsp;&nbsp;&nbsp;&nbsp; --> 3 tests should pass, confirming proper database configuration
 
 ## Future Enhancements:
@@ -77,3 +77,15 @@
 ### Troubleshooting:
 * Is there data in the database? <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records;"`
+
+### Notes On Current Configuration:
+If the containers are removed, do the following to successfully rebuild them:
+- comment out line 38 in `docker_compose.yml` ,(the line that has 'command' in it)
+- run `docker compose up`
+- go into the 'client' container, click 'Exec' tab, run `npm i`
+- stop all services
+- re-activate line 38 in 'docker-compose.yml'
+- run `docker compose up` to start all services
+
+### Project References:
+- https://github.com/thombergs/code-examples/tree/master/nodejs/node-csv-importer
