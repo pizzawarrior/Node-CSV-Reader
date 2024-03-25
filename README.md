@@ -61,7 +61,9 @@
 <img src="https://github.com/pizzawarrior/CSV-Reader/assets/94874182/5fd008c7-3c10-453e-9a10-ea247d1a4fe6" width="850">
 
 ## Running This Project Locally
-* Make sure Docker desktop is open: `docker compose up`
+* Make sure Docker desktop is open: If running for the first time you will need to create a container in Docker to store data in: Enter `docker volume create`
+* Then enter: `docker compose up`
+* Open localhost:3000 in the browser
 * To run the integration test: <br>
 &nbsp;&nbsp;&nbsp;&nbsp; --> cd to api, make sure Docker Desktop is open, and run: `docker compose run api npm test` <br>
 &nbsp;&nbsp;&nbsp;&nbsp; --> 3 tests should pass, confirming proper database configuration
