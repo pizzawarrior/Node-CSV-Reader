@@ -9,13 +9,13 @@
 &nbsp;&nbsp;&nbsp;&nbsp; - generate invoices based on customer usage
 
 ## User Stories:
-### Customer: Outrider.ai - Autonomous yard truck company deployed to thousands of sites globally
-- As a customer I want the ability to: <br>
+### Client: Outrider.ai - Autonomous yard truck company with hundreds of customers
+- As a client I want the ability to: <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - create an account, login, and signout <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - view all of my customers' usage data <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - view all of my customers' current invoices <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - view all of my customers' past invoices <br>
-&nbsp;&nbsp;&nbsp;&nbsp; - ask questions about/ resolve any issues my customers have with invoicing
+&nbsp;&nbsp;&nbsp;&nbsp; - adjudicate any issues my customers have with invoicing
 
 ### Usage Based Billing Company:
 - As a company, we want to be able to: <br>
@@ -39,11 +39,11 @@
 * Pg: as a non-blocking PostgreSQL client for Node
 * Sequelize: all things ORM; handling database interactions
 * Fast-csv: library for parsing and formatting CSV files
-* Json2csv: library for converting JSON into CSV with headers and proper line endings
+* Json2csv: library for converting JSON into CSV with headers and line endings
 * Jest: Integration testing
 
 ### Frontend:
-* React: for dynamically handling the UI, and providing a great foundation to scale from
+* React: for dynamically handling the UI, and providing a solid foundation to scale from
 * Axios: for sending async HTTP requests to the REST API endpoints
 * react-table: for facilitting the quick build of a table that cleanly integrates sorting
 
