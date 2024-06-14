@@ -3,7 +3,7 @@
 ## Problem Statement
 - As a startup we recieve a high volume of customer usage data sent to us as .csv files
 - We need to be able to: <br>
-&nbsp;&nbsp;&nbsp;&nbsp; - take .csv files, parse them, upload them to a database, and query the data <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - parse .csv files, upload them to a database, and query the data <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - view the data in a clean UI <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - aggregate the data by key metrics (eg. into hourly buckets for individual customers) <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - generate invoices based on customer usage
