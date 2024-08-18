@@ -39,10 +39,6 @@ services:
     volumes:
       - ./client:/app
       - /app/node_modules
-    # volumes: # This keeps app folder empty, but creates new client folder then adds app file but does not install deps
-    #  - type: bind
-    #    source: ./
-    #    target: /client/app
     ports:
       - "3000:3000"
     stdin_open: true

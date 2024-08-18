@@ -4,9 +4,11 @@ table {
   border-radius: 7px;
   color: white;
 }
+
 table tr:last-child td {
   border-bottom: 0;
 }
+
 table th,
 table td {
   margin: 0;
@@ -15,12 +17,13 @@ table td {
   border-right: 1px solid #2e852e;
   position: relative;
 }
+
 table th:last-child,
 table td:last-child {
   border-right: 0;
 }
+
 table tr:nth-child(even) {
-  /* background-color: #fafafa; */
   background-color: #01310b;
 }
 
@@ -34,10 +37,11 @@ table th::before {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
 }
+
 table th.sort-asc::before {
   border-bottom: 8px solid white;
-
 }
+
 table th.sort-desc::before {
   border-top: 8px solid white;
 }
@@ -47,8 +51,8 @@ table th.sort-desc::before {
   flex-direction: column;
   padding: 20px;
   background-color: #094615;
-
 }
+
 input {
   padding: 10px;
   margin-bottom: 20px;

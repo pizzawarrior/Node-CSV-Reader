@@ -3,7 +3,7 @@
 ## Problem Statement
 - As a startup we recieve a high volume of customer usage data sent to us as .csv files
 - We need to be able to: <br>
-&nbsp;&nbsp;&nbsp;&nbsp; - take .csv files, parse them, upload them to a database, and query the data <br>
+&nbsp;&nbsp;&nbsp;&nbsp; - parse .csv files, upload them to a database, and query the data <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - view the data in a clean UI <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - aggregate the data by key metrics (eg. into hourly buckets for individual customers) <br>
 &nbsp;&nbsp;&nbsp;&nbsp; - generate invoices based on customer usage
@@ -27,7 +27,7 @@
 
 ## Minimum Viable Product:
 1. A Node project that uses Docker to persist a relational database, and containerize all services independently into microservices
-2. Ability to upload .csv files, parse them, and add them to the db
+2. Ability to upload .csv files, parse them, and persist them to a db
 3. A UI that will call the db and display the data
 
 ## This project is made with:
@@ -45,7 +45,7 @@
 ### Frontend:
 * React: for dynamically handling the UI, and providing a solid foundation to scale from
 * Axios: for sending async HTTP requests to the REST API endpoints
-* react-table: for facilitting the quick build of a table that cleanly integrates sorting
+* React-table: for facilitting the quick build of a table that cleanly integrates sorting
 
 ## Project Architecture
 ![Appliction Architecture](https://github.com/pizzawarrior/CSV-Reader/assets/94874182/9f17f21e-0f8b-41d5-bc0a-1baa98589e85)
@@ -65,7 +65,7 @@
 * Then enter: `docker compose up`
 * Open localhost:3000 in the browser
 * To run the integration test: <br>
-&nbsp;&nbsp;&nbsp;&nbsp; --> cd to api, make sure Docker Desktop is open, and run: `docker compose run api npm test` <br>
+&nbsp;&nbsp;&nbsp;&nbsp; --> cd to api, make sure Docker Desktop is open, and run: `docker compose run --rm api npm test` <br>
 &nbsp;&nbsp;&nbsp;&nbsp; --> 3 tests should pass, confirming proper database configuration
 
 ## Future Enhancements:
@@ -78,4 +78,16 @@
 
 ### Troubleshooting:
 * Is there data in the database? <br>
-&nbsp;&nbsp;&nbsp;&nbsp; - With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records;"`
+&nbsp;&nbsp;&nbsp;&nbsp; - With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records limit 10;"`
+
+### Notes On Current Configuration:
+If the containers are removed, do the following to successfully rebuild them:
+- comment out line 38 in `docker_compose.yml` ,(the line that has 'command' in it)
+- run `docker compose up`
+- go into the 'client' container, click 'Exec' tab, run `npm i`
+- stop all services
+- re-activate line 38 in 'docker-compose.yml'
+- run `docker compose up` to start all services
+
+### Project References:
+- https://github.com/thombergs/code-examples/tree/master/nodejs/node-csv-importer
