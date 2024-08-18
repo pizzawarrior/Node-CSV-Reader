@@ -27,7 +27,7 @@
 
 ## Minimum Viable Product:
 1. A Node project that uses Docker to persist a relational database, and containerize all services independently into microservices
-2. Ability to upload .csv files, parse them, and add them to the db
+2. Ability to upload .csv files, parse them, and persist them to a db
 3. A UI that will call the db and display the data
 
 ## This project is made with:
@@ -45,7 +45,7 @@
 ### Frontend:
 * React: for dynamically handling the UI, and providing a great foundation to scale from
 * Axios: for sending async HTTP requests to the REST API endpoints
-* react-table: for facilitting the quick build of a table that cleanly integrates sorting
+* React-table: for facilitting the quick build of a table that cleanly integrates sorting
 
 ## Project Architecture
 ![Appliction Architecture](https://github.com/pizzawarrior/CSV-Reader/assets/94874182/9f17f21e-0f8b-41d5-bc0a-1baa98589e85)
@@ -76,7 +76,7 @@
 
 ### Troubleshooting:
 * Is there data in the database? <br>
-&nbsp;&nbsp;&nbsp;&nbsp; - With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records;"`
+&nbsp;&nbsp;&nbsp;&nbsp; - With the server and Docker running, click on the postgres container inside Docker, and inside the Exec terminal run: `psql -U postgres -d csvdb -c "SELECT * FROM records limit 10;"`
 
 ### Notes On Current Configuration:
 If the containers are removed, do the following to successfully rebuild them:
