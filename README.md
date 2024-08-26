@@ -65,7 +65,7 @@
 * Then enter: `docker compose up`
 * Open localhost:3000 in the browser
 * To run the integration test: <br>
-&nbsp;&nbsp;&nbsp;&nbsp; --> cd to api, make sure Docker Desktop is open, and run: `docker compose run --rm api npm test` <br>
+&nbsp;&nbsp;&nbsp;&nbsp; --> make sure Docker Desktop is open, and run: `docker compose run --rm api npm test` <br>
 &nbsp;&nbsp;&nbsp;&nbsp; --> 3 tests should pass, confirming proper database configuration
 
 ## Future Enhancements:
@@ -88,6 +88,14 @@ If the containers are removed, do the following to successfully rebuild them:
 - stop all services
 - re-activate line 38 in 'docker-compose.yml'
 - run `docker compose up` to start all services
+
+### Troubleshooting:
+Error: Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:5432 -> 0.0.0.0:0: listen tcp 0.0.0.0:5432: bind: address already in use
+Cause: Port 5432 is already in use
+Solution:
+- See what is running on 5432: `sudo lsof -i:5432`
+- Remove it: sudo kill -9 <PID #>
+- `docker compose up`
 
 ### Project References:
 - https://github.com/thombergs/code-examples/tree/master/nodejs/node-csv-importer
